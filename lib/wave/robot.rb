@@ -22,8 +22,14 @@
 #     image_url: the location of the avatar graphic to identify the robot
 #     profile_url: the URI of the html description of the robot.
 #
+
+require 'wave/robot/events'
+
 module Wave
   class Robot
+
+    include Wave::Events
+
     def self.define(name, options = {})
       if block_given?
         yield new(name, options)
