@@ -1,3 +1,3 @@
-class Wave
-  VERSION = "0.0.1"
+module Wave
+  VERSION = File.read(File.dirname(__FILE__) + "/../VERSION").chomp
 end
