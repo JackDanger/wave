@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "wave"
-    gem.summary = %Q{TODO}
-    gem.email = "gitcommit@6brand.com"
+    gem.summary = %Q{Ruby client for the Google Wave Federation Protocol}
+    gem.email = "google-wave@jackcanty.com"
     gem.homepage = "http://github.com/JackDanger/wave"
     gem.authors = ["Jack Danger Canty"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
