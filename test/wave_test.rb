@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class WaveTest < Test::Unit::TestCase
-  should "probably rename this file and start testing for real" do
-    flunk "hey buddy, you should probably rename this file and start testing for real"
+  should "like, at least, y'know, basically compile" do
+    assert Wave::VERSION
   end
 end
+
