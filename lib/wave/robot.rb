@@ -41,6 +41,8 @@ module Wave
       end
     end
 
+    attr_reader :name, :options
+
     def initialize(name, options = {})
       raise Error, "Each Robot requires a name" if name.empty?
       raise Error, "Each Robot requires an image_url" unless options[:image_url]
