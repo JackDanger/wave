@@ -25,8 +25,7 @@ class Wave
       @wavelet ||= options[:wavelet]
       raise Wave::WaveError, "Blip has no wavelet" unless @wavelet
       @creator = options[:creator]
-      # TODO: implement Participant class
-      # raise Wave::WaveError, "Blip has no creator" unless @creator
+      raise Wave::WaveError, "Blip has no creator" unless @creator
       @wavelet.blips << self
       @children ||= []
     end
