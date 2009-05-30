@@ -5,7 +5,7 @@ class RobotTest < Test::Unit::TestCase
   context "defining a robot" do
     context "with no name" do
       should "raise error" do
-        assert_raises(Wave::Robot::Error) { Wave::Robot.define }
+        assert_raises(Wave::Robot::Error) { Wave::Robot.define '' }
       end
     end
     context "with no options" do

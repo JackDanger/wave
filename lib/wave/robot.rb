@@ -29,6 +29,9 @@ require "wave/events"
 module Wave
   class Robot
 
+    class Error < StandardError
+    end
+
     include Wave::Events
 
     def self.define(name, options = {})
@@ -40,6 +43,10 @@ module Wave
     end
 
     def initialize(name, options = {})
+      raise Error, "Each Robot requires a name" if name.empty?
+      raise Error, "Each Robot requires a name" unless
+                                  options[:image_url] &&
+                                  options[:profile_url]
       @name = name
       @options = options
     end
