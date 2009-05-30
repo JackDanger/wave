@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{wave}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jack Danger Canty"]
@@ -32,7 +32,8 @@ Gem::Specification.new do |s|
      "test/robot_test.rb",
      "test/test_helper.rb",
      "test/wave_test.rb",
-     "test/wavelet_test.rb"
+     "test/wavelet_test.rb",
+     "wave.gemspec"
   ]
   s.homepage = %q{http://github.com/JackDanger/wave}
   s.rdoc_options = ["--charset=UTF-8"]
