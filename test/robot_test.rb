@@ -41,6 +41,12 @@ class RobotTest < Test::Unit::TestCase
               r.wavelet_blip_created do |content|
                 "create a new blip"
               end
+              r.wavelet_blip_removed do |content|
+                "remove the blip locally"
+              end
+              r.wavelet_blip_removed do |content|
+                "do something else after a blip is removed"
+              end
             end
       }
       should "save the specified events into an event callback" do
@@ -48,6 +54,22 @@ class RobotTest < Test::Unit::TestCase
       end
       should "have no callbacks for events that weren't supplied" do
         assert !@robot.events[:document_changed]
+      end
+      should "support multiple callbacks of the same type" do
+        assert_equal 2, @robot.events[:wavelet_blip_removed].size
+      end
+      should "catch typos on event names" do
+        assert_raises NoMethodError do
+          Wave::Robot.define "ValidName",
+                             :image_url => '/img.jpg',
+                             :profile_url => '/prof.html' do |r|
+            r.wildly_invalid_event_name {}
+          end
+        end
+      end
+      should "allow more events to be added after the initial block" do
+        @robot.wavelet_blip_created {|c| "freak out about the new blip" }
+        assert_equal 2, @robot.events[:wavelet_blip_created].size
       end
     end
   end
