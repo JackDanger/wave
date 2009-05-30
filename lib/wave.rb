@@ -33,4 +33,5 @@ end
 $:.unshift File.dirname(__FILE__)
 
 require "wave/wavelet"
+require "wave/blip"
 require "wave/robot"
