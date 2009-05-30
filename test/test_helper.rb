@@ -41,6 +41,16 @@ class Test::Unit::TestCase
         )
       end
 
+      def document(options = {})
+        Wave::Document.new(
+          'IMAGE',
+          { :wavelet => wavelet,
+            :blip    => Factory.blip,
+            :creator => Factory.participant(:wavelet => wavelet)
+          }.merge(options)
+        )
+      end
+
       protected
         def sequence
           @sequence ||= 0

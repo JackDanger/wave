@@ -22,7 +22,7 @@ class BlipTest < Test::Unit::TestCase
     should "not have a parent if it's the root blip" do
       assert !@blip.parent
     end
-    should "register itself in it's wavelet's blip collection" do
+    should "register itself in its wavelet's blip collection" do
       assert @blip.wavelet.blips.include?(@blip)
     end
     context "made second" do

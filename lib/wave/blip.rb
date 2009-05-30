@@ -14,7 +14,7 @@ class Wave
   class Blip
 
     attr_reader :wavelet, :parent, :children, :creator
-
+    attr_accessor :document
 
     def initialize(options = {})
       if options[:parent]
