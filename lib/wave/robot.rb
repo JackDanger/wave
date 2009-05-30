@@ -33,12 +33,10 @@ class Wave
 
     include Wave::Events
 
-    def self.define(name, options = {})
-      if block_given?
-        yield new(name, options)
-      else
-        new(name, options)
-      end
+    def self.define(name, options = {}, &block)
+      instance = new(name, options)
+      yield instance if block_given?
+      instance
     end
 
     attr_reader :name, :options

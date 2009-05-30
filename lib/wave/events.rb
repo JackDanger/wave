@@ -1,6 +1,8 @@
 class Wave
   module Events
 
+    attr_reader :events
+
     EVENTS = [
       'WAVELET_BLIP_CREATED',
       'WAVELET_BLIP_REMOVED',
@@ -21,7 +23,7 @@ class Wave
       eval <<-EOMETHOD
         def #{event.downcase}(&block)
           raise "No callback action defined for #{event}" unless block
-          add_callback_for(#{event}, block)
+          add_callback_for(:#{event.downcase}, block)
         end
       EOMETHOD
     end
@@ -29,9 +31,9 @@ class Wave
     protected
 
       def add_callback_for(event, block)
-        @callbacks ||= []
-        @callbacks[event] ||= []
-        @callbacks[event] << block
+        @events ||= {}
+        @events[event] ||= []
+        @events[event] << block
       end
   end
 end
