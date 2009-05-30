@@ -8,10 +8,9 @@ class WaveTest < Test::Unit::TestCase
         assert_raises(ArgumentError) { @wave = Wave.new }
       end
     end
-    context "without a valid id" do
-      should "raise an error" do
-        assert_raises(Wave::WaveError) { @wave = Wave.new('') }
-      end
+    should "set the wave id" do
+      assert Factory.wave.id =~
+                /^[\w\d]+@[\w\d]+\.[\w\d]+/
     end
   end
 end

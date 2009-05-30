@@ -3,8 +3,7 @@ require File.dirname(__FILE__) + '/test_helper'
 class ParticipantTest < Test::Unit::TestCase
 
   context "a participant" do
-    setup { @blip = Wave::Participant.new(:wavelet => new_wavelet,
-                                          :id => 'user@email.com') }
+    setup { @blip = Factory.participant }
     should "have a wavelet" do
       assert @blip.wavelet
     end
@@ -13,7 +12,7 @@ class ParticipantTest < Test::Unit::TestCase
     end
     should "require an id" do
       assert_raises Wave::WaveError do
-        Wave::Participant.new(:wavelet => new_wavelet)
+        Wave::Participant.new(:wavelet => Factory.wavelet)
       end
     end
     should "require a wavelet" do
@@ -22,11 +21,4 @@ class ParticipantTest < Test::Unit::TestCase
       end
     end
   end
-
-  protected
-
-    def new_wavelet
-      Wave::Wavelet.new(:wave => Wave.new("someid@wave.google.com"))
-    end
-
 end

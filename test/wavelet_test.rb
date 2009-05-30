@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/test_helper'
 class WaveletTest < Test::Unit::TestCase
 
   context "a wavelet" do
-    setup { @wavelet = Wave::Wavelet.new(:wave => new_wave) }
+    setup { @wavelet = Factory.wavelet }
     should "have a wave" do
       assert @wavelet.wave
     end
@@ -22,11 +22,4 @@ class WaveletTest < Test::Unit::TestCase
       assert @wavelet.wave.wavelets.include?(@wavelet)
     end
   end
-
-  protected
-
-    def new_wave
-      Wave.new("someid@wave.google.com")
-    end
-
 end

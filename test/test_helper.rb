@@ -1,12 +1,51 @@
 require 'rubygems'
 require 'test/unit'
 require 'shoulda'
-require 'factory_girl'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'wave'
-
 class Test::Unit::TestCase
+  module Factory
+    class << self
+
+      def wave(options = {})
+        Wave.new(
+          options[:id] || "id#{sequence}@wave.google.com",
+          options
+        )
+      end
+
+      def wavelet(options = {})
+        Wave::Wavelet.new(
+          { :wave => options[:wave] || Factory.wave
+          }.merge(options)
+        )
+      end
+
+      def participant(options = {})
+        Wave::Participant.new(
+          { :id => "id#{sequence}@email.com",
+            :wavelet => options[:wavelet] || Factory.wavelet
+          }.merge(options)
+        )
+      end
+
+      def blip(options = {})
+        wavelet = options[:wavelet] || Factory.wavelet
+        Wave::Blip.new(
+          { :wavelet => wavelet,
+            :creator => Factory.participant(:wavelet => wavelet)
+          }.merge(options)
+        )
+      end
+
+      protected
+        def sequence
+          @sequence ||= 0
+          @sequence += 1
+        end
+    end
+  end
 end

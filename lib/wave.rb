@@ -19,12 +19,11 @@ class Wave
   class WaveError < StandardError; end
 
 
-  attr_reader :wavelets
+  attr_reader :id, :wavelets, :options
 
   def initialize(id, options = {})
-    raise WaveError,
-          "provide a Wave id in the format: guid@domain.com" unless
-              id.to_s =~ /^[\w\d]+@[\w\d]+\.[\w\d]+/
+    @id = id
+    @options = options
     @wavelets = []
   end
 end
