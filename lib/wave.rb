@@ -8,8 +8,9 @@
 #
 #    a12f4d@wave.google.com
 #
-#  A wave contains a collection of wavelets which each have a
-#  distinct list of participants, documents, and history (operations)
+#  A wave contains a collection of wavelets which each have a distinct
+#  list of participants and a historical set of operations (blips)
+#  which contain documents
 
 
 class Wave
@@ -17,14 +18,19 @@ class Wave
 
   class WaveError < StandardError; end
 
+
+  attr_reader :wavelets
+
   def initialize(id, options = {})
     raise WaveError,
           "provide a Wave id in the format: guid@domain.com" unless
               id.to_s =~ /^[\w\d]+@[\w\d]+\.[\w\d]+/
+    @wavelets = []
   end
 end
 
 
 $:.unshift File.dirname(__FILE__)
 
+require "wave/wavelet"
 require "wave/robot"
