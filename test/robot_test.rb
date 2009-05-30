@@ -30,5 +30,25 @@ class RobotTest < Test::Unit::TestCase
       end
     end
   end
+
+  context "Robot events" do
+    context "specified via .define block" do
+      setup {
+          @robot = Wave::Robot.define "ValidName",
+                                      :image_url => '/img.jpg',
+                                      :profile_url => '/prof.html' do
+            wavelet_blip_created do |content|
+              "create a new blip"
+            end
+          end
+      }
+      should "save the specified events into an event callback" do
+        assert_equal 1, @robot.events[:wavelet_blip_created].size
+      end
+      should "have no callbacks for events that weren't supplied" do
+        assert_equal 0, @robot.events[:document_changed].size
+      end
+    end
+  end
 end
 
