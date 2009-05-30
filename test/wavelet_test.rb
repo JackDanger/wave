@@ -7,6 +7,11 @@ class WaveletTest < Test::Unit::TestCase
     should "have a wave" do
       assert @wavelet.wave
     end
+    should "require a wave" do
+      assert_raises Wave::WaveError do
+        Wave::Wavelet.new
+      end
+    end
     should "have a participant list" do
       assert @wavelet.participants
     end
