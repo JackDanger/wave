@@ -26,7 +26,7 @@
 
 require "wave/events"
 
-module Wave
+class Wave
   class Robot
 
     class Error < StandardError; end

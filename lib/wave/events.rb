@@ -1,4 +1,4 @@
-module Wave
+class Wave
   module Events
 
     EVENTS = [
