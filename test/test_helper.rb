@@ -51,6 +51,15 @@ class Test::Unit::TestCase
         )
       end
 
+      def annotation(options = {})
+        Wave::Annotation.new(
+          options[:document] || Factory.document,
+          options[:name]     || "Annotation#{sequence}",
+          options[:value]    || "content number #{sequence}",
+          options[:range]    || 4..11
+        )
+      end
+
       protected
         def sequence
           @sequence ||= 0
