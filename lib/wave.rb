@@ -3,5 +3,8 @@ module Wave
 end
 
 
-$:.unshift File.dirname(__FILE__)
+# $:.unshift File.dirname(__FILE__)
+
+p $:
+
 require "wave/robot"

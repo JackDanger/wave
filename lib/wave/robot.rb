@@ -16,14 +16,15 @@
 #       end
 #     end
 # 
+# Required options:
+#     image_url: the location of the avatar graphic to identify the robot
+#     profile_url: the URI of the html description of the robot.
 # Available options:
 #     debug: Optional variable that defaults to False and is passed through
 #         to the webapp application to determine if it should show debug info.
-#     image_url: the location of the avatar graphic to identify the robot
-#     profile_url: the URI of the html description of the robot.
 #
 
-require 'wave/robot/events'
+require "wave/events"
 
 module Wave
   class Robot
