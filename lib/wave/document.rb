@@ -17,8 +17,15 @@ class Wave
       @options      = options
       @annotations  = []
       raise Wave::WaveError, "Document has no blip" unless blip
-      @source       = blip.content
       blip.document = self
+    end
+
+    def items
+      source.to_s.scan(/<.*?>|./).flatten
+    end
+
+    def source
+      blip.content
     end
 
     def wavelet

@@ -25,6 +25,25 @@ class DocumentTest < Test::Unit::TestCase
   end
 
   context "document parsing" do
-    setup { @document = Factory.document }
+    setup {
+      @xml = "<xml><p>frist psot</p><p>great</p></xml>"
+      @document = Factory.document :blip => Factory.blip(
+                                              :content => @xml
+                                            )
+    }
+    should "have xml source available via Document#source" do
+      assert_equal @xml, @document.source
+    end
+    should "properly count the number of items" do
+      # <xml><p>frist psot</p><p>great</p></xml>
+      #   ^   ^ ^^^^^^^^^^  ^  ^ ^^^^^  ^    ^
+      assert_equal 21, @document.items.size
+    end
+    should "have its items properly ordered" do
+      # <xml><p>frist psot</p><p>great</p></xml>
+      #   ^   ^ ^^^^^^^^^^  ^  ^ ^^^^^  ^    ^
+      assert_equal "<p>", @document.items[1]
+      assert_equal "s",   @document.items[9]
+    end
   end
 end
