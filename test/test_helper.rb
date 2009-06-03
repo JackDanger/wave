@@ -36,6 +36,7 @@ class Test::Unit::TestCase
         wavelet = options[:wavelet] || Factory.wavelet
         Wave::Blip.new(
           { :wavelet => wavelet,
+            :content => "<xml></xml>",
             :creator => Factory.participant(:wavelet => wavelet)
           }.merge(options)
         )

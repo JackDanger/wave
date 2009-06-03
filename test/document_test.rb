@@ -16,11 +16,15 @@ class DocumentTest < Test::Unit::TestCase
     should "have a collection of annotations" do
       assert @document.annotations
     end
-    should "have a collection of non-text elements" do
-      assert @document.elements
-    end
     should "register itself as its blip's document" do
       assert_equal @document, @document.blip.document
     end
+    should "have raw xml content" do
+      assert @document.source
+    end
+  end
+
+  context "document parsing" do
+    setup { @document = Factory.document }
   end
 end

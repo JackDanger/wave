@@ -14,7 +14,7 @@ class Wave
   class Blip
 
     attr_reader :wavelet, :parent, :children, :creator
-    attr_accessor :document
+    attr_accessor :document, :content
 
     def initialize(options = {})
       if options[:parent]
@@ -26,6 +26,7 @@ class Wave
       raise Wave::WaveError, "Blip has no wavelet" unless @wavelet
       @creator = options[:creator]
       raise Wave::WaveError, "Blip has no creator" unless @creator
+      @content = options[:content]
       @wavelet.blips << self
       @children ||= []
     end

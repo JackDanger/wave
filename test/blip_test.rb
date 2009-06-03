@@ -13,6 +13,9 @@ class BlipTest < Test::Unit::TestCase
     should "have a creator" do
       assert @blip.creator
     end
+    should "have some content for use in crafting a document" do
+      assert @blip.content
+    end
     should "have a collection of child blips" do
       assert @blip.children
     end
