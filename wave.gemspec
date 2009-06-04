@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jack Danger Canty"]
-  s.date = %q{2009-05-30}
+  s.date = %q{2009-06-03}
   s.email = %q{google-wave@jackcanty.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
      "lib/wave/blip.rb",
      "lib/wave/document.rb",
      "lib/wave/events.rb",
+     "lib/wave/operation.rb",
      "lib/wave/participant.rb",
      "lib/wave/robot.rb",
      "lib/wave/wavelet.rb",
@@ -56,8 +57,11 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<rack>, [">= 1.0.0"])
     else
+      s.add_dependency(%q<rack>, [">= 1.0.0"])
     end
   else
+    s.add_dependency(%q<rack>, [">= 1.0.0"])
   end
 end
